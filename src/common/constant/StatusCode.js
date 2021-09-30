@@ -1,0 +1,18 @@
+'use strict';
+
+const status = {
+    SUCCESS: 200,
+    CREATED: 201,
+    UPDATE_SUCCESS: 204,
+    DELETE_SUCCESS: 204,
+    BAD_REQUEST_EXCEPTION: 400,
+    UNAUTHORIZED_EXCEPTION: 401,
+    FORBIDDEN_EXCEPTION: 403,
+    DATA_NOT_FOUND_EXCEPTION: 404,
+    CONFLICT: 409,
+    INTERNAL_SERVER_EXCEPTION: 500,
+};
+
+module.exports = {
+    status
+}
