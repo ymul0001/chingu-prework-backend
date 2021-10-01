@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: 'https://notes-chingu-app.herokuapp.com'
 }));
-
+app.options('*', cors());
 const CredentialRouter = require('./src/routes/CredentialRoute');
 const NoteRouter = require('./src/routes/NoteRoute');
 
