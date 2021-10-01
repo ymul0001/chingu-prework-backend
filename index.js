@@ -7,7 +7,9 @@ env.config();
 const express = require('express');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://notes-chingu-app.herokuapp.com'
+}));
 
 const PORT = process.env.PORT;
 
