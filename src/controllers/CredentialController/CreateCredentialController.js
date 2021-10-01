@@ -12,7 +12,9 @@ const saveCredential = async (req,res) => {
     const userName = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
+    const confirmPassword = req.body.confirmpassword;
     validateParams(res, userId, userName, email, password);
+    validatePassword(res, password, confirmPassword);
     const credentialData = [userId, userName, email, crypto.createHash('md5').update(password).digest('hex')];
     await createCredential(credentialData, res);
     return Response.returnResponse(res,StatusCode.status.CREATED, `Credential has been successfully created.`);
@@ -27,6 +29,11 @@ const createCredential = async (credentialData, res) => {
     }
 }
 
+const validatePassword = (res, password, confirmPassword) => {
+    if (password !== confirmPassword) {
+        return Response.returnResponse(res, StatusCode.status.BAD_REQUEST_EXCEPTION, 'Password does not match!');
+    }
+}
 
 const validateParams = (res, userId, userName, email, password) => {
     if (StringUtils.isNullOrEmpty(userId)) {
