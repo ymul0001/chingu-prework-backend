@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 const CredentialRouter = require('./src/routes/CredentialRoute');
 const NoteRouter = require('./src/routes/NoteRoute');
 
-app.use('/v1/credential', cors(), CredentialRouter);
+app.use('/v1/credential', CredentialRouter);
 app.use('/v1/note', NoteRouter)
 
 
