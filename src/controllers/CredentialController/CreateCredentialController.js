@@ -15,9 +15,11 @@ const saveCredential = async (req,res) => {
     const confirmPassword = req.body.confirmpassword;
     validateParams(res, userId, userName, email, password);
     validatePassword(res, password, confirmPassword);
-    const credentialData = [userId, userName, email, crypto.createHash('md5').update(password).digest('hex')];
-    await createCredential(credentialData, res);
-    return Response.returnResponse(res,StatusCode.status.CREATED, `Credential has been successfully created.`);
+    if (password === confirmPassword) {
+        const credentialData = [userId, userName, email, crypto.createHash('md5').update(password).digest('hex')];
+        await createCredential(credentialData, res);
+        return Response.returnResponse(res,StatusCode.status.CREATED, `Credential has been successfully created.`);
+    }
 }
 
 const createCredential = async (credentialData, res) => {
