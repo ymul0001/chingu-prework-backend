@@ -20,12 +20,12 @@ const PORT = process.env.PORT;
 //     next();
 // });
 
-app.use(cors());
+
 
 //configure express dependencies
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: false }));
-
+app.use(cors());
 
 const CredentialRouter = require('./src/routes/CredentialRoute');
 const NoteRouter = require('./src/routes/NoteRoute');
