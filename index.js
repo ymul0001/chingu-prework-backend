@@ -7,6 +7,8 @@ env.config();
 const express = require('express');
 
 const app = express();
+app.use(cors());
+
 const PORT = process.env.PORT;
 
 
@@ -25,12 +27,11 @@ const PORT = process.env.PORT;
 //configure express dependencies
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
 
 const CredentialRouter = require('./src/routes/CredentialRoute');
 const NoteRouter = require('./src/routes/NoteRoute');
 
-app.use('/v1/credential', CredentialRouter);
+app.use('/v1/credential', cors(), CredentialRouter);
 app.use('/v1/note', NoteRouter)
 
 
