@@ -27,7 +27,7 @@ const PORT = process.env.PORT;
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: 'https://notes-chingu-app.herokuapp.com'
+    origin: '*'
 }));
 app.options('*', cors());
 const CredentialRouter = require('./src/routes/CredentialRoute');
